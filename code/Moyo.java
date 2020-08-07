@@ -15,7 +15,7 @@ public class Moyo {
 	public static String prefix = ".m";
 	
 	private Moyo() throws LoginException {
-		jda = JDABuilder.createDefualt("Generic_Token").build();
+		jda = JDABuilder.createDefault("Generic_Token").build();
 		jda.getPresence().setStatus(OnlineStatus.IDLE);
 		jda.getPresence().setActivity(Activity.playing(".mhelp"));
 		jda.addEventListener(new Commands());
