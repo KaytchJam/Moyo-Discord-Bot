@@ -19,6 +19,7 @@ public class Moyo {
 		jda.getPresence().setStatus(OnlineStatus.IDLE);
 		jda.getPresence().setActivity(Activity.playing(".mhelp"));
 		jda.addEventListener(new Commands());
+		jda.addEventListener(new ReactionListener());
 	}
 	
 	public static void main(String[] args) throws LoginException {
