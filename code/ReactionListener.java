@@ -79,23 +79,27 @@ public class ReactionListener extends ListenerAdapter{
 		int p_move = p_pick - 1;
 		int cpu_move = rand.nextInt(2) - 1;
 		int cpu_pick = cpu_move + 1;
+		boolean tie = false;
 		
 		int m_product = p_move * cpu_move;
 		if (m_product < 0) {
-			if (p_move < cpu_move) { wins = true; }
-			else if (p_move > cpu_move) { wins = false; }
+			tie = false;
+			if (p_move < cpu_move) { wins = true;}
+			else if (p_move > cpu_move) { wins = false;}
 		} else if (m_product >= 0) {
-			if (p_move > cpu_move) { wins = true; }
-			else if (p_move < cpu_move) { wins = false; }
-		}
+			tie = false;
+			if (p_move > cpu_move) { wins = true;}
+			else if (p_move < cpu_move) { wins = false;}
+		} 
 		
-		boolean tie = false;
 		if (p_move == cpu_move) { tie = true; }
+		
+		//System.out.println("Player move value: " + p_move + "\nMoyo move value: " + cpu_move);
 		
 		String[] p_options = {"__Rock__", "__Paper__", "__Scissors__"};
 		String winningpfp = wins ? pfp1 : pfp2;
 		String winningPlayer = wins ? p1 : "Moyo";
-		String results = tie ? winningPlayer + " wins!" : "It's a **tie**!";
+		String results = tie ? "It's a **tie**!" : winningPlayer + " wins!";
 		
 		Consumer<Message> eat = (messi) -> {
 			messi.clearReactions().queue();
