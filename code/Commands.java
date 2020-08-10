@@ -12,7 +12,6 @@ import net.dv8tion.jda.api.entities.MessageEmbed;
 
 public class Commands extends ListenerAdapter{
 	
-	
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 		
 		String msg = event.getMessage().getContentRaw();
@@ -44,6 +43,7 @@ public class Commands extends ListenerAdapter{
 					help.setTitle("Information");
 					help.setDescription("Moyo is designed to help you quickly get Wikipedia and Oxford links for terms and words you want to learn about. Future mechanics to be determined...");
 					help.addField("Creator", "KJam", false);
+					help.addField("Want to add Moyo to your server?", "*Add Moyo:* https://tinyurl.com/moyoauth01", false);
 					help.addField("Commands", mactive + "\n" + mdef + "\n" + mwiki + "\n" + mrps, false);
 					help.setColor(0x663a82);
 					
@@ -65,6 +65,7 @@ public class Commands extends ListenerAdapter{
 					EmbedBuilder rps = new EmbedBuilder();
 					rps.setTitle("Rock, Paper, Scissors game!");
 					rps.addField("__Rules:__", "*Choose one of following reactions:*\n:punch: ``- Rock``\n:raised_hand: ``- Paper``\n:v: ``- Scissors``", false);
+					rps.setColor(0x99ffd6);
 					MessageEmbed mRPS = rps.build();
 					//System.out.println(mRPS.getTitle());
 					RestAction<Message> rpsRest = event.getChannel().sendMessage(mRPS);
@@ -75,6 +76,7 @@ public class Commands extends ListenerAdapter{
 						refMes.addReaction("✌️").queue();
 					};
 					rpsRest.queue(restReact);
+					rps.clear();
 					break;
 					
 				case "test": // Test
@@ -83,7 +85,7 @@ public class Commands extends ListenerAdapter{
 					Consumer<Message> callback = (message) -> {
 						Message m = message;
 						m.editMessage("This message is successfully edited").queue();
-						m.addReaction("👊").queue();
+						m.addReaction("💔").queue();
 					};
 					testMes.queue(callback);
 					break;
