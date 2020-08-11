@@ -96,9 +96,10 @@ public class ReactionListener extends ListenerAdapter{
 		
 		//System.out.println("Player move value: " + p_move + "\nMoyo move value: " + cpu_move);
 		
-		String[] p_options = {"__Rock__", "__Paper__", "__Scissors__"};
+		String[] p_options = {":punch:", ":raised_hand:", ":v:"};
 		String winningpfp = wins ? pfp1 : pfp2;
 		String winningPlayer = wins ? p1 : "Moyo";
+		String resultImg = tie ? "https://blacklapel.com/thecompass/wp-content/uploads/2015/10/Persian-Blue-Herringbone-Suit-and-Tie-Combinations.jpg" : winningpfp;
 		String results = tie ? "It's a **tie**!" : winningPlayer + " wins!";
 		
 		Consumer<Message> eat = (messi) -> {
@@ -108,7 +109,7 @@ public class ReactionListener extends ListenerAdapter{
 			rps.setTitle(oldEmb.getTitle());
 			rps.addField("**CHOICES**", "*The player chose* " + p_options[p_pick] + ", *Moyo chose* " + p_options[cpu_pick] + ".", false);
 			rps.addField("**RESULT**", results, false);
-			rps.setImage(winningpfp);
+			rps.setImage(resultImg);
 			rps.setColor(0x8f00b3);
 			oldEmb = rps.build();
 			messi.editMessage(oldEmb).queue();
