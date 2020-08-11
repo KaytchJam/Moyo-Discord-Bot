@@ -53,11 +53,11 @@ public class Commands extends ListenerAdapter{
 					
 				case "def": // Oxford Dictionary Command
 					event.getChannel()
-					.sendMessage("https://www.oxfordlearnersdictionaries.com/us/definition/english/" + msg.substring(5)).queue();
+					.sendMessage("https://www.oxfordlearnersdictionaries.com/us/definition/english/" + msg.substring(6)).queue();
 					break;
 					
 				case "wiki": // Wikipedia Command
-					String noSpace = msg.substring(6);
+					String noSpace = msg.substring(7);
 					event.getChannel().sendMessage("https://en.wikipedia.org/wiki/" + noSpace.replace(' ', '_')).queue();
 					break;
 					
